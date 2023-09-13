@@ -1,5 +1,4 @@
 # # 认识Golang
-
 ## C VS Java VS Golang 特性对比
 
 | C                          | Java              | Javascript                 | Golang                                   |
@@ -12,6 +11,7 @@
 - Go综合了多种语言的优势
 - Go天生支持高并发场景
 - Go目前已经在业界有了广泛的应用
+
 ## Runtime
 
 Runtime，运行时，就是支撑Go运行的执行环境。类似Java的JVM，JavaScript的V8引擎。
@@ -24,10 +24,8 @@ Runtime提供了功能有：
 - 垃圾回收能力
 - 协程调度
 - 屏蔽系统调用能力(做了不同系统调用之间的差异)
-- 很多关键字就是在调用Runtime的函数
-
+- 很多关键字就是在调用Runtime的函数 ^21c280
 ### 部分关键字和Runtime函数的对应关系
-
 
 | 关键字 | 函数                        |
 | ------ | --------------------------- |
@@ -35,11 +33,9 @@ Runtime提供了功能有：
 | new    | newobject                   |
 | make   | makeslice,makechain,makemap |
 | <-     | chansend1,chanrecv1         |
-
 ## Go的编译过程
 
 go 编译的过程大概分为：
-
 - 词法分析
 - 句法分析
 - 语义分析
@@ -53,13 +49,13 @@ go build -n
 ```
 
 这个命令可以把编译的过程打印出来。
-
 如果想更具体的看到每步操作后生成的文件，可以通过下面的命令看到。
 
 ```bash
 export GOSSAFUNC=main
 go build
 ```
+
 `GOSSAFUNC`环境变量指定一个函数，通过`go build`可以生成html形式的go编译过程，最终可以看到平台无关的汇编SSA代码。
 
 生成SSA最终会生成平台相关的汇编指令，可以通过如下命令看到：
@@ -80,4 +76,3 @@ go执行的第一个行代码是`/usr/local/go/src/runtime/rt0_xxx.s`文件开�
 - 通过`runtime·mainPC`获取到`runtime.main`函数的地址
 - 调用`runtime·newproc`函数创建一个新的协程
 - 调用`runtime·mstart`创建一个m，也就是系统线程
-- 
